@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TBC Training System — ICGC Bible Challenge 2026</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════ -->
+<!--  SCREEN 1: HOME                           -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-home" class="screen">
+  <div class="app-header">
+    <div class="logo-icon">✝</div>
+    <div>
+      <div class="app-header h1" style="font-size:1.05rem;font-weight:700;letter-spacing:0.02em;">TBC Training System</div>
+      <div style="font-size:0.75rem;color:#e2c97e;margin-top:1px;">ICGC Bible Challenge 2026</div>
+    </div>
+  </div>
+
+  <div class="screen-body">
+    <div class="home-hero">
+      <div class="cross-icon">📖</div>
+      <h2>Bible Challenge 2026</h2>
+      <p>Choose a training mode to begin your session</p>
+    </div>
+
+    <div class="mode-grid">
+      <!-- Study Mode -->
+      <div class="mode-card" data-mode="study">
+        <div class="mode-icon">🎓</div>
+        <div class="mode-title">Study Mode</div>
+        <div class="mode-desc">Learn with instant feedback. Filter by round category.</div>
+      </div>
+
+      <!-- Timed Mode -->
+      <div class="mode-card" data-mode="timed">
+        <div class="mode-icon">⏱️</div>
+        <div class="mode-title">Timed Mode</div>
+        <div class="mode-desc">40 questions. Speed training under exam pressure.</div>
+      </div>
+
+      <!-- Mock Mode -->
+      <div class="mode-card accent" data-mode="mock">
+        <div class="mode-icon">📝</div>
+        <div class="mode-title">Mock Exam</div>
+        <div class="mode-desc">Full 100-question competition simulation. No feedback until the end.</div>
+      </div>
+
+      <!-- Round 5A -->
+      <div class="mode-card" data-mode="round5a">
+        <div class="mode-icon">🔁</div>
+        <div class="mode-title">Round 5A</div>
+        <div class="mode-desc">Special challenge — 5 rotating long-form questions.</div>
+      </div>
+
+      <!-- Quote Practice -->
+      <div class="mode-card full-width" data-mode="quote">
+        <div class="mode-icon">💬</div>
+        <div class="mode-title">Quote Practice</div>
+        <div class="mode-desc">Scripture memory — type the exact NKJV verse from Matthew. All 28 chapters available.</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:28px;font-size:0.75rem;color:#9490a8;">
+      NKJV · All 20 Books in Scope · Fully Offline
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  SCREEN 2: SETUP                          -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-setup" class="screen">
+  <div class="app-header">
+    <div class="logo-icon">✝</div>
+    <div>
+      <div id="setup-title" style="font-size:1.05rem;font-weight:700;">Mode Setup</div>
+      <div style="font-size:0.75rem;color:#e2c97e;">Configure your session</div>
+    </div>
+    <button class="back-btn" data-back>← Home</button>
+  </div>
+
+  <div class="screen-body">
+
+    <div class="info-box" id="setup-info">
+      Configure your session below.
+    </div>
+
+    <!-- Round Category Filter (Study Mode only) -->
+    <div id="setup-filter-section" class="setup-card hidden">
+      <h3>📚 Select Round Category</h3>
+      <div class="filter-options">
+        <label class="radio-option" data-value="Round 1 — History">
+          <input type="radio" name="study-filter" value="Round 1 — History" />
+          <span class="radio-dot"></span>
+          <div>
+            <div class="radio-label">Round 1 — History</div>
+            <div class="radio-sublabel">Genesis, Exodus, Joshua, Judges, Ruth, Esther, 1–2 Samuel</div>
+          </div>
+        </label>
+        <label class="radio-option" data-value="Round 2 — Gospels & Acts">
+          <input type="radio" name="study-filter" value="Round 2 — Gospels & Acts" />
+          <span class="radio-dot"></span>
+          <div>
+            <div class="radio-label">Round 2 — Gospels &amp; Acts</div>
+            <div class="radio-sublabel">Matthew, Mark, Luke, John, Acts</div>
+          </div>
+        </label>
+        <label class="radio-option" data-value="Round 3 — Epistles">
+          <input type="radio" name="study-filter" value="Round 3 — Epistles" />
+          <span class="radio-dot"></span>
+          <div>
+            <div class="radio-label">Round 3 — Epistles</div>
+            <div class="radio-sublabel">Ephesians, 1–2 Timothy, Titus, James, 1–2 Peter</div>
+          </div>
+        </label>
+        <label class="radio-option" data-value="Round 4 — Doctrine">
+          <input type="radio" name="study-filter" value="Round 4 — Doctrine" />
+          <span class="radio-dot"></span>
+          <div>
+            <div class="radio-label">Round 4 — Doctrine</div>
+            <div class="radio-sublabel">Cross-book doctrinal questions</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Timer Selector (Timed Mode only) -->
+    <div id="setup-timer-section" class="setup-card hidden">
+      <h3>⏱️ Timer Per Question</h3>
+      <div class="timer-options">
+        <label class="radio-option" data-value="5">
+          <input type="radio" name="timer" value="5" />
+          <span class="radio-dot"></span>
+          <div>
+            <div class="radio-label">5 seconds</div>
+            <div class="radio-sublabel">Expert — very fast pace</div>
+          </div>
+        </label>
+        <label class="radio-option" data-value="7">
+          <input type="radio" name="timer" value="7" />
+          <span class="radio-dot"></span>
+          <div>
+            <div class="radio-label">7 seconds</div>
+            <div class="radio-sublabel">Standard — recommended starting point</div>
+          </div>
+        </label>
+        <label class="radio-option" data-value="10">
+          <input type="radio" name="timer" value="10" />
+          <span class="radio-dot"></span>
+          <div>
+            <div class="radio-label">10 seconds</div>
+            <div class="radio-sublabel">Relaxed — more time to think</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <!-- Feedback Toggle (Timed Mode only) -->
+    <div id="setup-feedback-section" class="setup-card hidden">
+      <h3>💡 Feedback Timing</h3>
+      <div class="feedback-options">
+        <label class="radio-option" data-value="immediate">
+          <input type="radio" name="feedback" value="immediate" />
+          <span class="radio-dot"></span>
+          <div>
+            <div class="radio-label">Immediate Feedback</div>
+            <div class="radio-sublabel">Show correct answer after each question (default)</div>
+          </div>
+        </label>
+        <label class="radio-option" data-value="end">
+          <input type="radio" name="feedback" value="end" />
+          <span class="radio-dot"></span>
+          <div>
+            <div class="radio-label">Feedback at End Only</div>
+            <div class="radio-sublabel">See all results after session completes</div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <button id="btn-setup-start" class="btn-start">Start Session →</button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  SCREEN 3: QUIZ                           -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-quiz" class="screen">
+  <div class="app-header">
+    <div class="logo-icon">✝</div>
+    <div>
+      <div style="font-size:1.05rem;font-weight:700;">Bible Challenge</div>
+      <div style="font-size:0.75rem;color:#e2c97e;">Training Session</div>
+    </div>
+    <button class="back-btn" data-back>✕ Exit</button>
+  </div>
+
+  <!-- Progress bar (top, full width) -->
+  <div class="progress-bar-wrap">
+    <div class="progress-bar-fill" id="quiz-progress-bar" style="width:0%"></div>
+  </div>
+
+  <!-- Header info bar -->
+  <div class="quiz-header-bar">
+    <span class="quiz-progress-text" id="quiz-progress">Question 1 of 40</span>
+    <span class="quiz-score-badge" id="quiz-score-display">Score: 0</span>
+    <span class="quiz-timer" id="quiz-timer-display" style="display:none">7s</span>
+  </div>
+
+  <!-- Question body -->
+  <div class="quiz-body">
+    <div class="question-category" id="question-category"></div>
+    <div class="question-text" id="question-text">Loading question...</div>
+
+    <div class="options-list" id="options-list"></div>
+
+    <div class="explanation-box" id="explanation-box" style="display:none"></div>
+
+    <button class="btn-next" id="btn-next" style="display:none">Next Question →</button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  SCREEN 4: RESULT                         -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-result" class="screen">
+  <div class="app-header">
+    <div class="logo-icon">✝</div>
+    <div>
+      <div style="font-size:1.05rem;font-weight:700;">Session Complete</div>
+      <div style="font-size:0.75rem;color:#e2c97e;">Your results</div>
+    </div>
+    <button class="back-btn" data-back>← Home</button>
+  </div>
+
+  <div class="screen-body">
+    <div class="result-hero">
+      <div class="result-score-circle">
+        <div class="result-score-num" id="result-score-num">0</div>
+        <div class="result-score-denom" id="result-score-denom">/ 0</div>
+      </div>
+      <div id="result-pct" style="font-size:1.5rem;font-weight:900;color:var(--gold);margin-bottom:6px;">0%</div>
+      <div class="result-title" id="result-title">Results</div>
+      <div class="result-subtitle" id="result-subtitle"></div>
+    </div>
+
+    <div class="breakdown-card">
+      <h4>Score by Category</h4>
+      <div id="breakdown-rows"></div>
+    </div>
+
+    <div class="info-box" id="result-wrong-info">
+      <strong id="result-wrong-count">0</strong> incorrect answer(s) — review below to reinforce your learning.
+    </div>
+
+    <div class="result-btns">
+      <button class="btn-review" id="btn-review-result">📋 Review Incorrect</button>
+      <button class="btn-again" id="btn-play-again">🔁 Try Again</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  SCREEN 5: REVIEW                         -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-review" class="screen">
+  <div class="app-header">
+    <div class="logo-icon">✝</div>
+    <div>
+      <div style="font-size:1.05rem;font-weight:700;">Review Incorrect</div>
+      <div style="font-size:0.75rem;color:#e2c97e;">Learn from mistakes</div>
+    </div>
+    <button class="back-btn" id="btn-review-back-result" data-back>← Results</button>
+  </div>
+
+  <div class="screen-body">
+    <div class="review-list" id="review-list">
+      <div class="loading-spinner"></div>
+    </div>
+    <div style="margin-top:16px;">
+      <button class="btn-again" data-back style="width:100%;">← Back to Home</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  SCREEN 6: ROUND 5A                       -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-round5a" class="screen">
+  <div class="app-header">
+    <div class="logo-icon">✝</div>
+    <div>
+      <div style="font-size:1.05rem;font-weight:700;">Round 5A — Special</div>
+      <div style="font-size:0.75rem;color:#e2c97e;">Long-form challenge</div>
+    </div>
+    <button class="back-btn" data-back>← Home</button>
+  </div>
+
+  <div class="screen-body">
+    <div class="r5a-rotation-info" id="r5a-rotation-info">Rotation 1/5</div>
+
+    <div class="r5a-question-card">
+      <div class="r5a-qnum" id="r5a-qnum">Question 1 of 5</div>
+      <div class="r5a-qtext" id="r5a-qtext">Loading...</div>
+    </div>
+
+    <div class="options-list" id="r5a-options"></div>
+
+    <div class="explanation-box" id="r5a-result" style="display:none"></div>
+
+    <button class="btn-start" id="btn-r5a-next" style="display:none;margin-top:16px;">
+      ✓ Done — Return Home
+    </button>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!--  SCREEN 7: QUOTE PRACTICE                 -->
+<!-- ══════════════════════════════════════════ -->
+<div id="screen-quote" class="screen">
+  <div class="app-header">
+    <div class="logo-icon">✝</div>
+    <div>
+      <div style="font-size:1.05rem;font-weight:700;">Quote Practice</div>
+      <div style="font-size:0.75rem;color:#e2c97e;">Matthew · NKJV</div>
+    </div>
+    <button class="back-btn" data-back>← Home</button>
+  </div>
+
+  <div class="screen-body">
+
+    <div class="setup-card">
+      <h3>📖 Select Verse</h3>
+      <div class="quote-selector">
+        <select id="quote-chapter-sel" class="select-styled">
+          <option value="">Select Chapter</option>
+        </select>
+        <select id="quote-verse-sel" class="select-styled" disabled>
+          <option value="">Select Verse</option>
+        </select>
+      </div>
+
+      <div style="font-size:0.82rem;color:var(--gray-600);margin-bottom:12px;">
+        Type the verse exactly as it appears in the NKJV. Punctuation and capitalization are not required — only the words matter.
+      </div>
+
+      <textarea
+        id="quote-answer-input"
+        class="quote-input"
+        placeholder="Type the verse here..."
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        spellcheck="false"
+      ></textarea>
+
+      <button id="btn-submit-quote" class="btn-submit-quote">Check My Answer →</button>
+    </div>
+
+    <div id="quote-result" class="quote-result" style="display:none"></div>
+
+  </div>
+</div>
+
+
+<!-- Embedded question bank — generated by convert.py -->
+<script src="data_embedded.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
